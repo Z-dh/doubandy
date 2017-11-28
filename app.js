@@ -17,6 +17,6 @@ angular.module('moviecat', [
 	}
 }]).constant('Appconfig',{
 		pageSize:10,
-		listapiads:'http://api.douban.com/v2/movie/',
-		detailapiads:'http://api.douban.com/v2/movie/subject/'
+		listapiads:'https://api.douban.com/v2/movie/',
+		detailapiads:'https://api.douban.com/v2/movie/subject/'
 	})
