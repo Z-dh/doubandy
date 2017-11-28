@@ -8,8 +8,7 @@
 			controller: 'movie_listCtrl'
 		});
 	}])
-
-	module.controller('movie_listCtrl', ['$scope','httpservice','$routeParams','$route',function ($scope,httpservice,$routeParams,$route) {
+	module.controller('movie_listCtrl', ['$scope','httpservice','$routeParams','$route','Appconfig',function ($scope,httpservice,$routeParams,$route,Appconfig) {
 		//$http.get('date.json').then(function(resp){
 		//	$scope.subjects=resp.data.subjects
 		//},function(err){
@@ -19,9 +18,11 @@
 		var count=10;
 		var start=(page-1)*count;
 		$scope.loadshow=true;
-		httpservice.jsonp('https://api.douban.com/v2/movie/'+$routeParams.listtype,{
+		$scope.title="loading...";
+		httpservice.jsonp(Appconfig.listapiads+$routeParams.listtype,{
 			count:count,
-			star:start
+			star:start,
+			q:$routeParams.q
 		},function(data){
 			$scope.subjects=data.subjects;
 			//console.log(data)
